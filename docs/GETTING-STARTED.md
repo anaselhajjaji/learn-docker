@@ -1,3 +1,18 @@
+# Concept
+
+To achieve isolation, docker uses the two Linux specific features below:
+- Namespacing: used to isolate resources per process (or group of processes), resources are: Processes, Hard drive, Network, Users, Hostnames, Inter Process Communication
+- Control Groups (cgroups): limit amount of resources used per process: Memory, CPU Usage, HD I/O, Network Bandwith
+
+But what about the other OS (MacOS, Windows) concerning Namespacing and Control Groups?
+- When docker is started, a Linux virtual machine is created and started, so using this Virtual Machine we're able to have Control Groups and Namespacing.
+- The containers will run inside this virtual machine.
+
+What is done when the image is instanciated to become container?
+- The image = filesystem snapshot is copied to an isolated piece of hardrive reserved to the container
+- Other resources are reserved and isolated for the container: RAM, CPU, Network ...
+- The process is started using the defined startup command and will have access to isolated resources (RAM, CPU ...)
+
 # Installation
 
 ## Windows
